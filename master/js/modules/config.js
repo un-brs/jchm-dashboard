@@ -26,7 +26,7 @@ function ($stateProvider, $urlRouterProvider, $resourceProvider, $controllerProv
 
 
   // defaults to dashboard
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/orgunits');
 
   // 
   // Application Routes
@@ -50,6 +50,18 @@ function ($stateProvider, $urlRouterProvider, $resourceProvider, $controllerProv
         title: 'Orgainizations',
         templateUrl: basepath('jchm-orgunits.html'),
         controller: 'JChmOrgUnitsCtrl'
+    })
+    .state('app.orgunits.detail', {
+        url: '/:orgUnitId',
+        // title: 'Orgainization',
+        templateUrl: basepath('jchm-docs.html'),
+        controller: 'NullController'
+    })
+    .state('app.docs', {
+        url: '/docs/:orgUnitId',
+        title: 'Organization documents',
+        templateUrl: basepath('jchm-docs.html'),
+        controller: 'JChmDocsCtrl'
     })
     .state('app.widgets', {
         url: '/widgets',

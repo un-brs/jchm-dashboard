@@ -1,10 +1,10 @@
 /**=========================================================
- * Module:jchm-organizations.js
+ * Module: jchm-docs.js
  * Provides a simple demo for typeahead
  =========================================================*/
 
-App.controller('JChmOrgUnitsCtrl', 
-    ["$scope", "$q", "jchmResources", function ($scope, $q, jchmResources) {
+App.controller('JChmDocsCtrl', 
+    ["$scope", "$state", "$q", "jchmResources", function ($scope, $state, $q, jchmResources) {
         // var User = $resource('http://localhost:8000/users/:userId?format=jsonp', {userId:'@id'}, 
         //     {
         //       get: { 
@@ -13,10 +13,7 @@ App.controller('JChmOrgUnitsCtrl',
         //         }
         //     }
         // );
-        $scope.is_loading = true;
-        jchmResources.OrgUnit.query().$promise.then(
-            function(orgs) {
-                $scope.orgs = orgs;
-            }
-        );
+        // $scope.is_loading = true;
+        console.debug($state.params.orgUnitId);
+        $scope.org = jchmResources.OrgUnit.get({orgUnitId:$state.params.orgUnitId});
 }]);

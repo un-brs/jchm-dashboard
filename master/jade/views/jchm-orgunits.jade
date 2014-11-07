@@ -1,4 +1,51 @@
 h3 Organizations
 
-.panel.panel-default
-    span.traditional(ng-bind="user.username" ng-class="csspinner")
+.row.traditional(ng-class="csspinner")
+  .col-lg-4(ng-repeat="org in orgs")
+    // START panel
+    .panel.panel-primary
+      .panel-heading
+        | {{org.name}}
+      .panel-body
+        // START panel
+        .panel.panel-green
+          .panel-heading
+            .row
+              .col-xs-3
+                em.fa.fa-archive.fa-3x
+              .col-xs-9.text-right
+                .text-md 26
+            .row
+              .col-xs-12.text-right
+                p.m0 New documents!
+          a(ui-sref='app.docs({orgUnitId:org.id})').panel-footer.bg-gray-dark.bt0.clearfix.btn-block
+            span.pull-left View Details
+            span.pull-right
+              em.fa.fa-chevron-circle-right
+        // END panel
+        // START panel
+        .panel.panel-warning
+          .panel-heading
+            .row
+              .col-xs-3
+                em.fa.fa-user.fa-3x
+              .col-xs-9.text-right
+                .text-md 26
+            .row
+              .col-xs-12.text-right
+                p.m0 New contacts!
+          a(href='#').panel-footer.bg-gray-dark.bt0.clearfix.btn-block
+            span.pull-left View Details
+            span.pull-right
+              em.fa.fa-chevron-circle-right
+        // END panel
+        #jchmOrgUnitPanelInfo.panel.panel-default
+          .panel-heading
+            | About organization
+            paneltool(tool-collapse)
+          .panel-wrapper(collapse="jchmOrgUnitPanelInfo", ng-init="jchmOrgUnitPanelInfo = false")
+            .panel-body
+              p {{org.description}}
+            .panel-footer
+              p {{org.address}}
+    // END panel
